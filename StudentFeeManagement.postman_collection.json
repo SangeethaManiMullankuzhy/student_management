@@ -21,7 +21,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"studentName\": \"Sangeetha Mani\",\r\n\t\"grade\": \"1\",\r\n    \"parentName\": \"Mani\",\r\n    \"mobileNo\": \"+971 555925134\",\r\n    \"schoolName\": \"St.Thomas\"\r\n}\r\n",
+					"raw": "{\r\n\t\"studentFirstName\": \"Kate\",\r\n    \"studentLastName\": \"John\",\r\n\t\"grade\": \"1\",\r\n    \"parentName\": \"John\",\r\n    \"mobileNo\": \"+971 555925346\",\r\n    \"schoolName\": \"St.Thomas\",\r\n    \"dob\": \"10 Jan 2015, 12:30\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,6 +181,14 @@
 						"viewAllReceipts"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "actuator",
+			"request": {
+				"method": "GET",
+				"header": []
 			},
 			"response": []
 		}
