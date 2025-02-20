@@ -1,13 +1,23 @@
 package com.library.so;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class StudentSO {
 	
 	private Long studentId;
-	private String studentName;
+	private String studentFullName;
 	private String grade;
 	private String mobileNo;
 	private String parentName;
 	private String schoolName;
+	private String studentFirstName;
+	private String studentLastName;
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dob;
+	private int age;
 	
 	public Long getStudentId() {
 		return studentId;
@@ -15,11 +25,12 @@ public class StudentSO {
 	public void setStudentId(Long studentId) {
 		this.studentId = studentId;
 	}
-	public String getStudentName() {
-		return studentName;
+
+	public String getStudentFullName() {
+		return studentFullName;
 	}
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
+	public void setStudentFullName(String studentFullName) {
+		this.studentFullName = studentFullName;
 	}
 	public String getGrade() {
 		return grade;
@@ -44,6 +55,31 @@ public class StudentSO {
 	}
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
+	}
+	public String getStudentFirstName() {
+		return studentFirstName;
+	}
+	public void setStudentFirstName(String studentFirstName) {
+		this.studentFirstName = studentFirstName;
+	}
+	public String getStudentLastName() {
+		return studentLastName;
+	}
+	public void setStudentLastName(String studentLastName) {
+		this.studentLastName = studentLastName;
+	}
+
+	public LocalDate getDob() {
+		return dob;
+	}
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
 	

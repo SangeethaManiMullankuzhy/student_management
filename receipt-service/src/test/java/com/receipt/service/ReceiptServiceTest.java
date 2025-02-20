@@ -41,7 +41,7 @@ public class ReceiptServiceTest {
     void testViewReceiptsByStudentId() {
         StudentSO student = new StudentSO();
         student.setStudentId(1L);
-        student.setStudentName("Sara");
+        student.setStudentFirstName("Sara");
         student.setGrade("5");
         student.setMobileNo("+971 736452635");
         student.setParentName("Mathew");
@@ -65,7 +65,7 @@ public class ReceiptServiceTest {
     	
     	//Then
         assertEquals(1, receiptSOs.size());
-        assertEquals("Sara", receiptSOs.get(0).getStudentSO().getStudentName());
+        assertEquals("Sara", receiptSOs.get(0).getStudentSO().getStudentFirstName());
     }
 
 }

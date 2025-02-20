@@ -7,7 +7,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +43,8 @@ public class StudentServiceTest {
         Student student1 = setStudent();
         
         Student student2 = new Student();
-        student2.setStudentName("Sara");
+        student2.setStudentFirstName("Kate");
+        student2.setStudentLastName("John");
         student2.setGrade("5");
         student2.setMobileNo("+971 736452635");
         student2.setParentName("Mathew");
@@ -54,7 +58,7 @@ public class StudentServiceTest {
 
         //Then
         assertEquals(2, result.size());
-        assertEquals("Kate", result.get(0).getStudentName());
+        assertEquals("Sara", result.get(0).getStudentFirstName());
         verify(studentRepository, times(1)).findAll();
     }
     
@@ -71,7 +75,7 @@ public class StudentServiceTest {
         StudentSO studentFound = studentService.searchById(studentId);
 
         //Then
-        assertEquals("Kate", studentFound.getStudentName());
+        assertEquals("Sara", studentFound.getStudentFirstName());
         verify(studentRepository, times(1)).findById(studentId);
     }	
 
@@ -85,17 +89,27 @@ public class StudentServiceTest {
 
         //Then
         assertNotNull(savedStudent);
-        assertEquals("Kate", savedStudent.getStudentName());
+        assertEquals("Sara John", savedStudent.getStudentFullName());
         verify(studentRepository, times(1)).save(any(Student.class));
     }
     
 	private Student setStudent() {
 		Student student1 = new Student();
-        student1.setStudentName("Kate");
+
+		try {
+		student1.setStudentFirstName("Sara");
+		student1.setStudentLastName("John");
         student1.setGrade("1");
         student1.setMobileNo("+971 736452432");
         student1.setParentName("John");
         student1.setSchoolName("PWS School");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        LocalDate dob = LocalDate.of(1995, 5, 10);
+        student1.setDob(dob);
+
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 		return student1;
 	}	
 

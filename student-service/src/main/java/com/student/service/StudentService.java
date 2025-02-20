@@ -1,5 +1,11 @@
 package com.student.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.exception.StudentNotFoundException;
+import com.library.exception.StudentUnderAgeException;
 import com.library.so.StudentSO;
 import com.student.entity.Student;
 import com.student.repo.StudentRepository;
@@ -36,6 +43,15 @@ public class StudentService {
 	}
 	
 	public Student addStudent(Student student){
+		student.setStudentFullName(student.getStudentFirstName()+ " " + student.getStudentLastName());
+		LocalDate birthDate = LocalDate.parse(student.getDob().toString());
+		LocalDate currentDate = LocalDate.now();
+		Period age = Period.between(birthDate, currentDate);
+		if(age.getYears() < 4) {
+			throw new StudentUnderAgeException("Student cant be registered if below age 4");	
+		}
+		student.setAge(age.getYears());
+
 		return studentRepo.save(student);
 	}
 	
